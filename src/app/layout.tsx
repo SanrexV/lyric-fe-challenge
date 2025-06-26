@@ -22,11 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`p-8 ${InterSans.className} antialiased`}>
-        <div className="w-full flex justify-between items-start space-x-7">
+      <body className={`p-4 md:p-8 ${InterSans.className} antialiased`}>
+        <div className="w-full md:flex md:justify-between md:items-start md:space-x-7">
           <div className="transition-all duration-1000">
             <Navbar />
-            <div className="py-8">{children}</div>
+            <div className="py-4 md:py-8">{children}</div>
           </div>
           <Sidebar />
         </div>

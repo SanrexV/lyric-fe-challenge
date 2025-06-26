@@ -9,7 +9,7 @@ const Sidebar = () => {
   if (!isOpen) return null;
 
   return (
-    <div className="w-96 bg-neutral-950 text-white rounded-xl shadow-xl p-6 z-50">
+    <div className="hidden md:block w-96 bg-neutral-950 text-white rounded-xl shadow-xl p-6 z-50">
       <div className="flex justify-between items-start">
         <h2 className="text-teal-700 text-lg font-semibold">
           Welcome to Lyric Music

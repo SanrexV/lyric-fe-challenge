@@ -16,7 +16,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ onSearch }) => {
   };
 
   return (
-    <div className="flex items-center justify-center p-4">
+    <div className="p-2 md:p-4">
       <form
         onSubmit={handleSearch}
         className="flex w-full max-w-md rounded-2xl shadow-lg overflow-hidden bg-neutral-900"
@@ -32,7 +32,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ onSearch }) => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search..."
-          className="flex-grow px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </form>
     </div>

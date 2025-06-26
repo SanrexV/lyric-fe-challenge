@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="transition-all duration-1000 flex justify-start items-center">
         <Link
           href="/"
-          className="relative w-[159px] aspect-[16/9] text-2xl font-bold text-white"
+          className="relative w-[90px] md:w-[159px] aspect-[16/9] text-2xl font-bold text-white"
         >
           <Image
             className="object-cover"
@@ -41,7 +41,7 @@ export default function Navbar() {
 
         <SearchBox onSearch={() => console.log("onSearch")} />
 
-        <div className="ml-auto mr-8 md:flex space-x-6">
+        <div className="hidden text-neutral-300 ml-auto mr-8 md:flex space-x-6">
           <LuBell className="cursor-pointer hover:text-teal-400" size={30} />
           <LuSettings
             className="cursor-pointer hover:text-teal-400"
@@ -64,19 +64,13 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t mt-2 shadow-sm">
-          <Link
-            href="/"
-            className="block px-4 py-2 text-gray-600 hover:bg-gray-100"
-          >
-            Home
-          </Link>
-          <Link
-            href="/content"
-            className="block px-4 py-2 text-gray-600 hover:bg-gray-100"
-          >
-            Content
-          </Link>
+        <div className="md:hidden border-t border-neutral-900 mt-2 shadow-sm">
+          <div className="flex md-hidden justify-center py-2 mx-5 space-x-2">
+            <Button label="All" isActive />
+            <Button label="Country" />
+            <Button label="Rock" />
+            <Button label="Pop" />
+          </div>
         </div>
       )}
     </nav>
