@@ -15,10 +15,10 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
 }) => {
   const baseStyles =
-    "cursor-pointer rounded-full transition-colors flex items-center justify-center bg-neutral-900 hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] text-lg h-10 sm:h-9 px-4 sm:px-5 sm:min-w-20";
+    "cursor-pointer rounded-full transition-colors flex items-center justify-center bg-neutral-900 hover:bg-neutral-800 text-lg h-10 sm:h-9 px-4 sm:px-5 sm:min-w-20";
   const disabledStyle =
     "dark:disabled:hover:bg-[#0000] dark:disabled:text-white/40 cursor-not-allowed";
-  const activeStyle = "bg-teal-700";
+  const activeStyle = "bg-teal-700 hover:bg-teal-600";
 
   return (
     <button

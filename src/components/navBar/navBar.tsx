@@ -10,11 +10,37 @@ import {
 } from "react-icons/lu";
 import Link from "next/link";
 import Image from "next/image";
+
+import { useLayoutContext } from "@lyric-app/context/layoutContext";
+
 import Button from "@lyric-app/components/button/button";
 import SearchBox from "@lyric-app/components/searchBox/searchBox";
 
+const GENRES_LIST = ["All", "Country", "Rock", "Pop"];
+
 export default function Navbar() {
+  const { setSearchBoxValue, setFiltervalue, filterValue } = useLayoutContext();
   const [isOpen, setIsOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState(filterValue);
+
+  const handleOnSearch = (query: string) => {
+    setSearchBoxValue(query);
+  };
+
+  const handleOnClickFilter = (genre: string) => {
+    setActiveFilter(genre);
+    setFiltervalue(genre);
+  };
+
+  const renderGenreList = () =>
+    GENRES_LIST.map((genre) => (
+      <Button
+        key={genre}
+        label={genre}
+        isActive={activeFilter === genre}
+        onClick={() => handleOnClickFilter(genre)}
+      />
+    ));
 
   return (
     <nav className="transition-all duration-1000 bg-neutral-950 shadow-md rounded-lg sticky top-0 w-full z-50">
@@ -32,14 +58,9 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden mx-5 md:flex space-x-2">
-          <Button label="All" isActive />
-          <Button label="Country" />
-          <Button label="Rock" />
-          <Button label="Pop" />
-        </div>
+        <div className="hidden mx-5 md:flex space-x-2">{renderGenreList()}</div>
 
-        <SearchBox onSearch={() => console.log("onSearch")} />
+        <SearchBox onSearch={handleOnSearch} />
 
         <div className="hidden text-neutral-300 ml-auto mr-8 md:flex space-x-6">
           <LuBell className="cursor-pointer hover:text-teal-400" size={30} />
@@ -66,10 +87,7 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden border-t border-neutral-900 mt-2 shadow-sm">
           <div className="flex md-hidden justify-center py-2 mx-5 space-x-2">
-            <Button label="All" isActive />
-            <Button label="Country" />
-            <Button label="Rock" />
-            <Button label="Pop" />
+            {renderGenreList()}
           </div>
         </div>
       )}
